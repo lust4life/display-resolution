@@ -1,0 +1,4 @@
+- https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsa
+- https://github.com/tpn/winsdk-10/blob/9b69fd26ac0c7d0b83d378dba01080e93349c2ed/Include/10.0.10240.0/um/WinUser.h#L12522
+- https://github.com/tpn/winsdk-10/blob/9b69fd26ac0c7d0b83d378dba01080e93349c2ed/Include/10.0.10240.0/um/wingdi.h#L2315
+- https://devblogs.microsoft.com/scripting/use-powershell-to-interact-with-the-windows-api-part-1/
