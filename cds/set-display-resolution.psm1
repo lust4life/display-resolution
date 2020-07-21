@@ -11,11 +11,11 @@
 
 function Set-DisplayResolution {
     param (
-        [Parameter(Mandatory=$true, Position = 0)] 
+        [Parameter(Mandatory = $true, Position = 0)] 
         [int] 
         $Width, 
 
-        [Parameter(Mandatory=$true, Position = 1)] 
+        [Parameter(Mandatory = $true, Position = 1)] 
         [int] 
         $Height,
 
@@ -24,6 +24,10 @@ function Set-DisplayResolution {
     )
     
     [cds.Helper]::ChangeDisplaySettings($width, $height, $flag)
+}
+
+function Get-DisplayResolution {
+    [cds.Helper]::GetDisplaySettings()
 }
 
 $cds = @"
@@ -141,3 +145,5 @@ $cds = @"
 "@
     
 Add-Type -TypeDefinition $cds
+
+Export-ModuleMember -Function Set-DisplayResolution, Get-DisplayResolution
