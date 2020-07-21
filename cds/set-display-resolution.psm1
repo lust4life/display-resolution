@@ -9,6 +9,10 @@
     NoReset = 0x10000000
 }
 
+<#
+.LINK
+https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsa#parameters
+#>
 function Set-DisplayResolution {
     param (
         [Parameter(Mandatory = $true, Position = 0)] 
