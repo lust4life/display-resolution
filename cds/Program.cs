@@ -6,7 +6,7 @@ namespace cds
     {
         static void Main(string[] args)
         {
-            var res = Helper.ChangeDisplaySettings(1920, 1080, Helper.Flags.CDS_FULLSCREEN);
+            var res = Helper.ChangeDisplaySettings(1920, 1080, Helper.Flags.CDS_TEST);
             System.Console.WriteLine(res);
         }
     }
