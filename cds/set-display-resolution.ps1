@@ -22,8 +22,11 @@ function Set-DisplayResolution {
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
+    
+    [cds.Helper]::ChangeDisplaySettings($width, $height, $flag)
+}
 
-    $cds = @"
+$cds = @"
     namespace cds
     {
         using System;
@@ -137,6 +140,4 @@ function Set-DisplayResolution {
     }    
 "@
     
-    Add-Type -TypeDefinition $cds
-    [cds.Helper]::ChangeDisplaySettings($width, $height, $flag)
-}
+Add-Type -TypeDefinition $cds
