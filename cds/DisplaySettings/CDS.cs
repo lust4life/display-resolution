@@ -79,7 +79,7 @@ namespace cds
                 case -6:
                     return "The settings change was unsuccessful because the system is DualView capable.";
                 default:
-                    return $"unknow return code: {res}";
+                    return "unknow return code: " + res;
             }
         }
 
