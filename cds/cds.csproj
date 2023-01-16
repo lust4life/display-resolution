@@ -4,14 +4,14 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Change Display Resolution</Title>
+    <Title>Change Display Settings</Title>
     <Description>Sets display resolution info on Windows</Description>
     <Authors>jiajun.qian, Robert Sirre</Authors>
     <StartupObject>cds.Program</StartupObject>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>0.0.2</Version>
-    <ToolCommandName>ChangeDisplayResolution</ToolCommandName>
+    <Version>0.0.3</Version>
+    <ToolCommandName>ChangeDisplaySettings</ToolCommandName>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lust4life/display-resolution</PackageProjectUrl>
@@ -26,7 +26,9 @@
     <RepositoryType>Git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>Screen Resolution;Display Resolution;Resolution</PackageTags>
-    <PackageReleaseNotes>First release as .Net tool</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      0.0.3: Used more appropriate command 'ChangeDisplaySettings' instead of 'ChangeDisplayResolution', which is better suited to later improvements.
+      0.0.2: First release as .Net tool</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
