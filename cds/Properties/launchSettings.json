@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "cds": {
+      "commandName": "Project",
+      "commandLineArgs": "--help"
+    }
+  }
+}

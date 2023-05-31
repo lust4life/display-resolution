@@ -1,8 +1,43 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Change Display Settings</Title>
+    <Description>Sets display resolution info on Windows</Description>
+    <Authors>jiajun.qian, Robert Sirre</Authors>
+    <StartupObject>cds.Program</StartupObject>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>0.0.3</Version>
+    <ToolCommandName>ChangeDisplaySettings</ToolCommandName>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/lust4life/display-resolution</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lust4life/display-resolution</RepositoryUrl>
+    <IncludeSymbols>True</IncludeSymbols>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyName>ChangeDisplaySettings</AssemblyName>
+    <WarningLevel>9999</WarningLevel>
+    <NoWarn />
+    <PackAsTool>True</PackAsTool>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>Screen Resolution;Display Resolution;Resolution</PackageTags>
+    <PackageReleaseNotes>
+      0.0.3: Used more appropriate command 'ChangeDisplaySettings' instead of 'ChangeDisplayResolution', which is better suited to later improvements.
+      0.0.2: First release as .Net tool</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Link="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+  </ItemGroup>
 
 </Project>

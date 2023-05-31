@@ -3,27 +3,52 @@ namespace cds
     using System;
     using System.Runtime.InteropServices;
 
+
+    /// <summary>
+    /// See: https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-devmodea
+    /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct DEVMODE
     {
+        /// <summary>The number of pixels per logical inch. Printer drivers do not use this member.</summary>
         [FieldOffset(102)]
         public short dmLogPixels;
+
+        /// <summary>Bits per pixel</summary>
+        /// <remarks>Specifies the color resolution, in bits per pixel, of the display device (for example: 4 bits for 16 colors, 8 bits for 256 colors, or 16 bits for 65,536 colors).</remarks>
         [FieldOffset(104)]
         public int dmBitsPerPel;
+
+        /// <summary>Pixel height</summary>
         [FieldOffset(108)]
         public int dmPelsWidth;
+
+        /// <summary>Pixel width</summary>
         [FieldOffset(112)]
         public int dmPelsHeight;
+
+        /// <summary>Mode flags</summary>
         [FieldOffset(116)]
         public int dmDisplayFlags;
+
+        /// <summary>Mode frequency</summary>
         [FieldOffset(120)]
         public int dmDisplayFrequency;
     }
 
 
-    // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsa
+
+    /// <summary>
+    /// See: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsa
+    /// </summary>
     public class Helper
     {
+
+        /// <summary>
+        /// Gets the display settings.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.Exception">can't get resolution from win api</exception>
         public static DEVMODE GetDisplaySettings()
         {
             // #define ENUM_CURRENT_SETTINGS       ((DWORD)-1)
@@ -40,7 +65,27 @@ namespace cds
             return devMode;
         }
 
-        public static string ChangeDisplaySettings(int width, int height, int flags)
+        /// <summary>
+        /// Changes the display settings.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="flags">The flags.</param>
+        /// <returns></returns>
+        public static string ChangeDisplaySettings(int width, int height, Flags flags)
+        {
+            return ChangeDisplaySettings(width, height, flags, out var _);
+        }
+
+        /// <summary>
+        /// Changes the display settings.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="flags">The flags.</param>
+        /// <param name="success">if set to <c>true</c> the change was successful.</param>
+        /// <returns></returns>
+        public static string ChangeDisplaySettings(int width, int height, Flags flags, out bool success)
         {
             // /* Return values for ChangeDisplaySettings */
             // #define DISP_CHANGE_SUCCESSFUL       0
@@ -59,10 +104,12 @@ namespace cds
             devMode.dmPelsWidth = width;
             devMode.dmPelsHeight = height;
 
-            var res = ChangeDisplaySettings(ref devMode, flags);
+            var res = ChangeDisplaySettings(ref devMode, (int)flags);
+            success = false;
             switch (res)
             {
                 case 0:
+                    success = true;
                     return "The settings change was successful.";
                 case 1:
                     return "The computer must be restarted for the graphics mode to work.";
@@ -84,12 +131,16 @@ namespace cds
         }
 
         [DllImport("user32.dll")]
-        static extern int EnumDisplaySettings(string deviceName, int modeNum, ref DEVMODE devMode);
+        private static extern int EnumDisplaySettings(string? deviceName, int modeNum, ref DEVMODE devMode);
 
         [DllImport("user32.dll")]
-        public static extern int ChangeDisplaySettings(ref DEVMODE devMode, int flags);
+        private static extern int ChangeDisplaySettings(ref DEVMODE devMode, int flags);
 
-        public class Flags
+        /// <summary>
+        /// Resolution chgange flags
+        /// </summary>
+        [Flags]
+        public enum Flags:int
         {
             // #define CDS_UPDATEREGISTRY           0x00000001
             // #define CDS_TEST                     0x00000002
@@ -99,13 +150,20 @@ namespace cds
             // #define CDS_RESET                    0x40000000
             // #define CDS_NORESET                  0x10000000
 
-            public const int CDS_UPDATEREGISTRY = 0x01;
-            public const int CDS_TEST = 0x02;
-            public const int CDS_FULLSCREEN = 0x04;
-            public const int CDS_GLOBAL = 0x08;
-            public const int CDS_SET_PRIMARY = 0x10;
-            public const int CDS_RESET = 0x40000000;
-            public const int CDS_NORESET = 0x10000000;
+            /// <summary/>
+            CDS_UPDATEREGISTRY = 0x01,
+            /// <summary/>
+            CDS_TEST = 0x02,
+            /// <summary/>
+            CDS_FULLSCREEN = 0x04,
+            /// <summary/>
+            CDS_GLOBAL = 0x08,
+            /// <summary/>
+            CDS_SET_PRIMARY = 0x10,
+            /// <summary/>
+            CDS_RESET = 0x40000000,
+            /// <summary/>
+            CDS_NORESET = 0x10000000
         }
     }
 }
