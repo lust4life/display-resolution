@@ -43,6 +43,7 @@ namespace cds
     /// </summary>
     public class Helper
     {
+        #nullable enable
 
         /// <summary>
         /// Gets the display settings.
@@ -105,8 +106,9 @@ namespace cds
 
             devMode.dmPelsWidth = width;
             devMode.dmPelsHeight = height;
-            devMode.dmDisplayFrequency = refreshrate;
-
+            if (refreshrate > 0) {
+                devMode.dmDisplayFrequency = refreshrate;
+            }
             var res = ChangeDisplaySettings(ref devMode, (int)flags);
             success = false;
             switch (res)
@@ -140,7 +142,7 @@ namespace cds
         private static extern int ChangeDisplaySettings(ref DEVMODE devMode, int flags);
 
         /// <summary>
-        /// Resolution chgange flags
+        /// Resolution change flags
         /// </summary>
         [Flags]
         public enum Flags:int

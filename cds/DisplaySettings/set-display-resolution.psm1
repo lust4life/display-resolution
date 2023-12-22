@@ -23,9 +23,9 @@ function Set-DisplayResolution {
         [int] 
         $Height,
 
-        [Parameter(Mandatory = $true, Position = 2)] 
+        [Parameter(Mandatory = $false, Position = 2)] 
         [int] 
-        $RefreshRate,
+        $RefreshRate=0,
 
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
