@@ -11,8 +11,6 @@ Import-Module set-display-resolution.psm1
 
 Usage:
 ``` powershell
-Set-DisplayResolution(1024,768,CDSFlags.SetPrimary);
-
 Set-DisplayResolution -Width 1024 -Height 768
 Set-DisplayResolution -Width 1024 -Height 768 -RefreshRate 60
 Set-DisplayResolution -Width 1024 -Height 768 -RefreshRate 60 -flag "t"
