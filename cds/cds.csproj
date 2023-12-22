@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Change Display Settings</Title>
     <Description>Sets display resolution info on Windows</Description>
-    <Authors>jiajun.qian, Robert Sirre</Authors>
+    <Authors>jiajun.qian, Robert Sirre, Samuel Zamvil</Authors>
     <StartupObject>cds.Program</StartupObject>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
