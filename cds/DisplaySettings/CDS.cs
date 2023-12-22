@@ -70,11 +70,12 @@ namespace cds
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
+        /// <param name="refreshrate">The refresh rate.</param>
         /// <param name="flags">The flags.</param>
         /// <returns></returns>
-        public static string ChangeDisplaySettings(int width, int height, Flags flags)
+        public static string ChangeDisplaySettings(int width, int height, int refreshrate, Flags flags)
         {
-            return ChangeDisplaySettings(width, height, flags, out var _);
+            return ChangeDisplaySettings(width, height, refreshrate, flags, out var _);
         }
 
         /// <summary>
@@ -82,10 +83,11 @@ namespace cds
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
+        /// <param name="refreshrate">The refresh rate.</param>
         /// <param name="flags">The flags.</param>
         /// <param name="success">if set to <c>true</c> the change was successful.</param>
         /// <returns></returns>
-        public static string ChangeDisplaySettings(int width, int height, Flags flags, out bool success)
+        public static string ChangeDisplaySettings(int width, int height, int refreshrate, Flags flags, out bool success)
         {
             // /* Return values for ChangeDisplaySettings */
             // #define DISP_CHANGE_SUCCESSFUL       0
@@ -103,6 +105,7 @@ namespace cds
 
             devMode.dmPelsWidth = width;
             devMode.dmPelsHeight = height;
+            devMode.dmDisplayFrequency = refreshrate;
 
             var res = ChangeDisplaySettings(ref devMode, (int)flags);
             success = false;

@@ -23,11 +23,15 @@ function Set-DisplayResolution {
         [int] 
         $Height,
 
+        [Parameter(Mandatory = $true, Position = 2)] 
+        [int] 
+        $RefreshRate,
+
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
     
-    [cds.Helper]::ChangeDisplaySettings($width, $height, $flag)
+    [cds.Helper]::ChangeDisplaySettings($width, $height, $refreshrate, $flag)
 }
 
 function Get-DisplayResolution {
