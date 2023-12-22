@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace cds
@@ -64,7 +65,7 @@ namespace cds
         /// The refresh rate.
         /// </value>
         [Range(1, int.MaxValue)]
-        [Option('r', "refreshrate", Required = false, HelpText = "Refresh rate of the screen")]
+        [Option('r', "refreshrate", Required = false, HelpText = "Refresh rate of the screen", Default = 0)]
         public int RefreshRate { get; set; }
 
         /// <summary>
