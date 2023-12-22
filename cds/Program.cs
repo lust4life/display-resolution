@@ -64,7 +64,7 @@ namespace cds
         /// The refresh rate.
         /// </value>
         [Range(1, int.MaxValue)]
-        [Option('r', "refreshrate", Required = true, HelpText = "Refresh rate of the screen")]
+        [Option('r', "refreshrate", Required = false, HelpText = "Refresh rate of the screen")]
         public int RefreshRate { get; set; }
 
         /// <summary>
