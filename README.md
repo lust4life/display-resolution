@@ -13,7 +13,11 @@ Usage:
 ``` powershell
 Set-DisplayResolution(1024,768,CDSFlags.SetPrimary);
 
-write-host Get-DisplayResolution()
+Set-DisplayResolution -Width 1024 -Height 768
+Set-DisplayResolution -Width 1024 -Height 768 -RefreshRate 60
+Set-DisplayResolution -Width 1024 -Height 768 -RefreshRate 60 -flag "t"
+
+Get-DisplayResolution
 ```
 
 ## .Net Tool
@@ -36,6 +40,8 @@ ChangeDisplaySettings --help
   -w, --width     Required. Width of the screen
 
   -h, --height    Required. Height of the screen
+
+  -r, --refreshrate Optional. Refresh rate of the screen
 
   -t, --test      (Default: false) Test resolution change or actually perform the change.
 
