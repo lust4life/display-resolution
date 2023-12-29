@@ -6,11 +6,11 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Change Display Settings</Title>
     <Description>Sets display resolution info on Windows</Description>
-    <Authors>jiajun.qian, Robert Sirre</Authors>
+    <Authors>jiajun.qian, Robert Sirre, Samuel Zamvil</Authors>
     <StartupObject>cds.Program</StartupObject>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <ToolCommandName>ChangeDisplaySettings</ToolCommandName>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -27,6 +27,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>Screen Resolution;Display Resolution;Resolution</PackageTags>
     <PackageReleaseNotes>
+      0.0.4: Added support for setting the refresh rate.
       0.0.3: Used more appropriate command 'ChangeDisplaySettings' instead of 'ChangeDisplayResolution', which is better suited to later improvements.
       0.0.2: First release as .Net tool</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>

@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace cds
@@ -14,6 +15,7 @@ namespace cds
                    string res = Helper.ChangeDisplaySettings(
                                         o.Width,
                                         o.Height,
+                                        o.RefreshRate,
                                         o.Test
                                             ? Helper.Flags.CDS_TEST
                                             : Helper.Flags.CDS_SET_PRIMARY,
@@ -55,6 +57,16 @@ namespace cds
         [Range(1,int.MaxValue)]
         [Option('h', "height", Required = true, HelpText = "Height of the screen")]
         public int Height { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refresh rate.
+        /// </summary>
+        /// <value>
+        /// The refresh rate.
+        /// </value>
+        [Range(1, int.MaxValue)]
+        [Option('r', "refreshrate", Required = false, HelpText = "Refresh rate of the screen", Default = 0)]
+        public int RefreshRate { get; set; }
 
         /// <summary>
         /// Test resolution change or actually perform.
